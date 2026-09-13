@@ -1,0 +1,687 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rinku Kalsi — Data Analyst</title>
+<meta name="description" content="Rinku Kalsi — Data Analyst at Abbott. Dashboards, models, and the occasional robot.">
+
+<!-- 
+  TODO before publishing:
+  - Replace the placeholder email (hello@rinkukalsi.com) with your real one
+  - Replace the LinkedIn / GitHub / Medium hrefs (currently "#") with your real profile URLs
+  - Swap the résumé link target if you want a downloadable PDF
+-->
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<style>
+  :root {
+    --paper: #F7F6FB;
+    --paper-dim: #EFEDF7;
+    --ink: #17151F;
+    --ink-soft: #4A4655;
+    --line: #DCD8E9;
+    --purple: #7C3AED;
+    --purple-dim: #EDE4FE;
+    --amber: #C97A1A;
+    --teal: #0F8F6E;
+
+    --font-display: 'Space Grotesk', sans-serif;
+    --font-body: 'IBM Plex Sans', sans-serif;
+    --font-mono: 'IBM Plex Mono', monospace;
+
+    --max: 780px;
+  }
+
+  * { box-sizing: border-box; }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    * { animation-duration: 0.001ms !important; animation-iteration-count: 1 !important; transition-duration: 0.001ms !important; }
+  }
+
+  body {
+    margin: 0;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: var(--font-body);
+    font-size: 17px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  a {
+    color: inherit;
+  }
+
+  a:focus-visible,
+  button:focus-visible {
+    outline: 2px solid var(--purple);
+    outline-offset: 3px;
+    border-radius: 2px;
+  }
+
+  .wrap {
+    max-width: var(--max);
+    margin: 0 auto;
+    padding: 0 28px;
+  }
+
+  /* ---------- nav ---------- */
+
+  header.site-nav {
+    position: sticky;
+    top: 0;
+    z-index: 20;
+    background: rgba(247, 246, 251, 0.88);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--line);
+  }
+
+  .nav-inner {
+    max-width: var(--max);
+    margin: 0 auto;
+    padding: 16px 28px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+  }
+
+  .nav-mark {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 16px;
+    text-decoration: none;
+    white-space: nowrap;
+  }
+
+  .nav-mark .dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--purple);
+    flex: none;
+  }
+
+  nav.links {
+    display: flex;
+    gap: 22px;
+    font-size: 14.5px;
+  }
+
+  nav.links a {
+    text-decoration: none;
+    color: var(--ink-soft);
+    border-bottom: 1px solid transparent;
+    padding-bottom: 2px;
+    transition: color 0.15s ease, border-color 0.15s ease;
+  }
+
+  nav.links a:hover {
+    color: var(--ink);
+    border-color: var(--purple);
+  }
+
+  @media (max-width: 560px) {
+    nav.links { display: none; }
+  }
+
+  /* ---------- hero ---------- */
+
+  .hero {
+    padding: 76px 0 48px;
+  }
+
+  .hero .eyebrow-line {
+    font-family: var(--font-mono);
+    font-size: 13px;
+    color: var(--ink-soft);
+    margin: 0 0 18px;
+  }
+
+  .hero .eyebrow-line span.live {
+    color: var(--purple);
+  }
+
+  h1.headline {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: clamp(38px, 6.2vw, 58px);
+    line-height: 1.05;
+    letter-spacing: -0.01em;
+    margin: 0 0 24px;
+    max-width: 11ch;
+  }
+
+  .hero p.subhead {
+    font-size: 18px;
+    color: var(--ink-soft);
+    max-width: 52ch;
+    margin: 0 0 30px;
+  }
+
+  .hero-ctas {
+    display: flex;
+    gap: 26px;
+    flex-wrap: wrap;
+    margin-bottom: 56px;
+  }
+
+  .cta {
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 15px;
+    padding-bottom: 3px;
+    border-bottom: 1.5px solid var(--ink);
+  }
+
+  .cta.muted {
+    border-bottom-color: var(--line);
+    color: var(--ink-soft);
+  }
+
+  .cta:hover {
+    border-bottom-color: var(--purple);
+    color: var(--purple);
+  }
+
+  /* KPI strip — the one bold hero device */
+
+  .kpi-strip {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    border-top: 1px solid var(--line);
+  }
+
+  .kpi {
+    padding: 20px 18px 4px 0;
+    border-right: 1px solid var(--line);
+  }
+
+  .kpi:last-child { border-right: none; padding-right: 0; }
+  .kpi:first-child { padding-left: 0; }
+
+  .kpi .num {
+    font-family: var(--font-mono);
+    font-weight: 500;
+    font-size: clamp(22px, 3.4vw, 30px);
+    color: var(--purple);
+    display: block;
+    margin-bottom: 6px;
+  }
+
+  .kpi .label {
+    font-size: 13px;
+    color: var(--ink-soft);
+    line-height: 1.4;
+  }
+
+  @media (max-width: 620px) {
+    .kpi-strip { grid-template-columns: 1fr 1fr; row-gap: 22px; }
+    .kpi { border-right: none; padding: 0; }
+    .kpi:nth-child(odd) { border-right: 1px solid var(--line); padding-right: 16px; }
+  }
+
+  /* ---------- section shell ---------- */
+
+  section {
+    padding: 56px 0;
+    border-top: 1px solid var(--line);
+  }
+
+  h2.section-title {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 26px;
+    margin: 0 0 22px;
+  }
+
+  section > p.lede {
+    max-width: 64ch;
+    color: var(--ink);
+  }
+
+  /* ---------- work ---------- */
+
+  blockquote.pull {
+    margin: 28px 0;
+    padding: 4px 0 4px 20px;
+    border-left: 2px solid var(--purple);
+    font-family: var(--font-display);
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 1.45;
+    color: var(--ink);
+    max-width: 52ch;
+  }
+
+  .toolbox {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 9px;
+    margin-top: 26px;
+  }
+
+  .toolbox span {
+    font-family: var(--font-mono);
+    font-size: 13px;
+    padding: 6px 11px;
+    border: 1px solid var(--line);
+    border-radius: 4px;
+    color: var(--ink-soft);
+  }
+
+  .career-log {
+    margin-top: 34px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .career-item {
+    display: grid;
+    grid-template-columns: 22px 1fr;
+    gap: 14px;
+    padding: 18px 0;
+    border-top: 1px solid var(--line);
+  }
+
+  .career-item:first-child { border-top: none; padding-top: 0; }
+
+  .career-item .marker {
+    padding-top: 6px;
+  }
+
+  .career-item .marker .ring {
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+    border: 1.5px solid var(--purple);
+    background: transparent;
+  }
+
+  .career-item.current .marker .ring {
+    background: var(--purple);
+  }
+
+  .career-item h3 {
+    font-family: var(--font-body);
+    font-weight: 600;
+    font-size: 16px;
+    margin: 0 0 2px;
+  }
+
+  .career-item .role {
+    font-size: 13.5px;
+    color: var(--ink-soft);
+    margin-bottom: 8px;
+  }
+
+  .career-item .status {
+    font-family: var(--font-mono);
+    font-size: 11.5px;
+    color: var(--purple);
+    margin-left: 8px;
+  }
+
+  .career-item p {
+    margin: 0;
+    max-width: 56ch;
+    font-size: 15px;
+    color: var(--ink);
+  }
+
+  /* ---------- projects ---------- */
+
+  .project-log {
+    margin-top: 8px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .project-row {
+    padding: 22px 0;
+    border-top: 1px solid var(--line);
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 8px;
+    transition: background 0.15s ease;
+  }
+
+  .project-row:hover {
+    background: var(--purple-dim);
+    margin: 0 -18px;
+    padding: 22px 18px;
+  }
+
+  .project-row:first-child { border-top: none; }
+
+  .project-row .ptitle {
+    display: flex;
+    align-items: baseline;
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+
+  .project-row h3 {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 18px;
+    margin: 0;
+  }
+
+  .project-row .index {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    color: var(--ink-soft);
+  }
+
+  .project-row p {
+    margin: 0;
+    max-width: 58ch;
+    font-size: 15px;
+    color: var(--ink-soft);
+  }
+
+  .tag-row {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-top: 4px;
+  }
+
+  .tag-row span {
+    font-family: var(--font-mono);
+    font-size: 11.5px;
+    color: var(--ink-soft);
+  }
+
+  .tag-row span:not(:last-child)::after {
+    content: '';
+  }
+
+  .tag-row span + span {
+    border-left: 1px solid var(--line);
+    padding-left: 8px;
+  }
+
+  /* ---------- off the clock ---------- */
+
+  .off-grid {
+    margin-top: 8px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0;
+  }
+
+  .off-block {
+    padding: 22px 22px 22px 0;
+    border-top: 1px solid var(--line);
+  }
+
+  .off-block:nth-child(odd) {
+    border-right: 1px solid var(--line);
+    padding-right: 24px;
+  }
+
+  .off-block:nth-child(even) {
+    padding-left: 24px;
+  }
+
+  .off-block:nth-child(-n+2) {
+    border-top: none;
+  }
+
+  .off-block h3 {
+    font-family: var(--font-body);
+    font-weight: 600;
+    font-size: 15px;
+    margin: 0 0 8px;
+  }
+
+  .off-block p {
+    margin: 0;
+    font-size: 14.5px;
+    color: var(--ink-soft);
+  }
+
+  @media (max-width: 620px) {
+    .off-grid { grid-template-columns: 1fr; }
+    .off-block:nth-child(odd) { border-right: none; padding-right: 0; }
+    .off-block:nth-child(even) { padding-left: 0; }
+    .off-block:nth-child(-n+2) { border-top: 1px solid var(--line); }
+    .off-block:first-child { border-top: none; }
+  }
+
+  /* ---------- contact / footer ---------- */
+
+  footer {
+    padding: 56px 0 70px;
+    border-top: 1px solid var(--line);
+  }
+
+  footer p.lede {
+    margin-bottom: 30px;
+  }
+
+  .contact-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 26px;
+    margin-bottom: 44px;
+  }
+
+  .contact-links a {
+    text-decoration: none;
+    font-family: var(--font-display);
+    font-weight: 500;
+    font-size: 17px;
+    border-bottom: 1.5px solid var(--line);
+    padding-bottom: 2px;
+    transition: border-color 0.15s ease, color 0.15s ease;
+  }
+
+  .contact-links a:hover {
+    border-color: var(--purple);
+    color: var(--purple);
+  }
+
+  .foot-line {
+    font-family: var(--font-mono);
+    font-size: 12.5px;
+    color: var(--ink-soft);
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 8px;
+    border-top: 1px solid var(--line);
+    padding-top: 18px;
+  }
+</style>
+</head>
+<body>
+
+<header class="site-nav">
+  <div class="nav-inner">
+    <a href="#top" class="nav-mark"><span class="dot"></span> Rinku Kalsi</a>
+    <nav class="links">
+      <a href="#work">Work</a>
+      <a href="#projects">Projects</a>
+      <a href="#off-the-clock">Off the clock</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<main class="wrap" id="top">
+
+  <section class="hero" style="border-top: none;">
+    <p class="eyebrow-line">Chicago, IL · <span class="live" id="local-time">--:--</span> local</p>
+    <h1 class="headline">I make messy data sit up straight.</h1>
+    <p class="subhead">Data Analyst at Abbott, running the numbers behind a regulatory program that spans 17 countries. Off the clock: models nobody asked for, and a mild robotics chip on my shoulder.</p>
+    <div class="hero-ctas">
+      <a class="cta" href="#projects">See the work</a>
+      <a class="cta muted" href="#contact">Say hello</a>
+    </div>
+    <div class="kpi-strip">
+      <div class="kpi">
+        <span class="num">17</span>
+        <span class="label">country markets reporting through my dashboards</span>
+      </div>
+      <div class="kpi">
+        <span class="num">30M+</span>
+        <span class="label">records run through my fraud-detection model</span>
+      </div>
+      <div class="kpi">
+        <span class="num">1st</span>
+        <span class="label">place, national robotics final — still bring it up</span>
+      </div>
+      <div class="kpi">
+        <span class="num">2</span>
+        <span class="label">degrees, two continents (Mumbai, then DC)</span>
+      </div>
+    </div>
+  </section>
+
+  <section id="work">
+    <h2 class="section-title">What I actually do</h2>
+    <p class="lede">I'm a Data Analyst on Abbott's Global Strategies &amp; Regulations team in Chicago, where I support ATLAS — an analytics program that turns regulatory reporting across 17 country markets into something a DVP can read in one glance instead of fifteen. That means KPI frameworks, executive Power BI dashboards, and more DAX than I'd like to admit to out loud.</p>
+
+    <blockquote class="pull">
+      My last recommendation wasn't a new dashboard — it was a glossary. The fastest way to stop the same question landing in your inbox for the fifth time is to put the answer where people are already looking.
+    </blockquote>
+
+    <div class="toolbox">
+      <span>Power BI</span>
+      <span>DAX</span>
+      <span>Python</span>
+      <span>SQL</span>
+      <span>dbt</span>
+      <span>Looker</span>
+      <span>Azure</span>
+    </div>
+
+    <div class="career-log">
+      <div class="career-item current">
+        <div class="marker"><div class="ring"></div></div>
+        <div>
+          <h3>Abbott Laboratories <span class="status">current</span></h3>
+          <p class="role">Data Analyst I — Global Strategies &amp; Regulations</p>
+          <p>Supporting ATLAS end to end: KPI frameworks, executive dashboards, and a documentation strategy that actually gets read.</p>
+        </div>
+      </div>
+      <div class="career-item">
+        <div class="marker"><div class="ring"></div></div>
+        <div>
+          <h3>S.R. Mechanicals</h3>
+          <p class="role">Data &amp; Reporting</p>
+          <p>Migrated reporting off spreadsheets and onto AWS, cutting manual reporting down to nearly nothing.</p>
+        </div>
+      </div>
+      <div class="career-item">
+        <div class="marker"><div class="ring"></div></div>
+        <div>
+          <h3>Techno Talent Inc.</h3>
+          <p class="role">Contract Analyst</p>
+          <p>Placed on contract assignments maintaining dashboards for clients who needed the numbers right, not just on time.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="projects">
+    <h2 class="section-title">Things I've built when nobody told me to</h2>
+    <div class="project-log">
+      <div class="project-row">
+        <div class="ptitle">
+          <span class="index">01</span>
+          <h3>Fraud detection with graph neural networks</h3>
+        </div>
+        <p>Trained a GNN on 30M+ financial records to flag money-laundering patterns that rule-based systems miss. Built in PyTorch, because rules don't scale and graphs do.</p>
+        <div class="tag-row"><span>PyTorch</span><span>Graph Neural Networks</span><span>Fraud Detection</span></div>
+      </div>
+      <div class="project-row">
+        <div class="ptitle">
+          <span class="index">02</span>
+          <h3>Location NER research</h3>
+        </div>
+        <p>Research at GWU on extracting locations from unstructured text — teaching a model to read between the lines of an address nobody bothered to write clearly.</p>
+        <div class="tag-row"><span>NLP</span><span>Named Entity Recognition</span><span>Research</span></div>
+      </div>
+      <div class="project-row">
+        <div class="ptitle">
+          <span class="index">03</span>
+          <h3>Candidate matching for Ikigai AI / CrowdDoing</h3>
+        </div>
+        <p>Volunteer NLP work matching people to the causes they're best suited for. Still a prototype — the kind of project that stays interesting specifically because no one's shipped it yet.</p>
+        <div class="tag-row"><span>NLP</span><span>Volunteer</span><span>Prototype</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="off-the-clock">
+    <h2 class="section-title">Off the clock</h2>
+    <div class="off-grid">
+      <div class="off-block">
+        <h3>Robots, then data</h3>
+        <p>Before spreadsheets, it was robots — I placed first in a national robotics competition, then kept collecting wins in data competitions afterward. Old habits.</p>
+      </div>
+      <div class="off-block">
+        <h3>Travel, without a car</h3>
+        <p>I get around by train, bus, and stubbornness — I don't drive, and I've made peace with it. Ask me for a recommendation and I'll skip the landmark for somewhere with better food and worse signage.</p>
+      </div>
+      <div class="off-block">
+        <h3>Rotaract</h3>
+        <p>I volunteer with Rotaract, because spreadsheets are more fun when they're not the only thing you build community around.</p>
+      </div>
+      <div class="off-block">
+        <h3>Writing</h3>
+        <p>I write on Medium about data and the occasional idea that deserved more than a Slack message, alongside what's on GitHub and LinkedIn.</p>
+      </div>
+    </div>
+  </section>
+
+  <footer id="contact">
+    <h2 class="section-title">Let's talk</h2>
+    <p class="lede">Open to conversations about data, regulatory analytics, or why your dashboard has fourteen filters nobody uses.</p>
+    <div class="contact-links">
+      <a href="mailto:hello@rinkukalsi.com">Email</a>
+      <a href="#" target="_blank" rel="noopener">LinkedIn</a>
+      <a href="#" target="_blank" rel="noopener">GitHub</a>
+      <a href="#" target="_blank" rel="noopener">Medium</a>
+    </div>
+    <div class="foot-line">
+      <span>Built by me, for me.</span>
+      <span id="year-line">© 2026 Rinku Kalsi</span>
+    </div>
+  </footer>
+
+</main>
+
+<script>
+  // Live local time — small nod to the fact this whole site is basically a dashboard.
+  function updateClock() {
+    var el = document.getElementById('local-time');
+    if (!el) return;
+    var now = new Date();
+    var opts = { hour: '2-digit', minute: '2-digit', timeZone: 'America/Chicago' };
+    el.textContent = now.toLocaleTimeString('en-US', opts) + ' CT';
+  }
+  updateClock();
+  setInterval(updateClock, 15000);
+
+  document.getElementById('year-line').textContent = '© ' + new Date().getFullYear() + ' Rinku Kalsi';
+</script>
+
+</body>
+</html>
